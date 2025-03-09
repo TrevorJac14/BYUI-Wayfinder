@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYUI Wayfinder</title>
+    <link rel="stylesheet" href="style.css"> <!-- Linking your CSS file -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" 
+            async defer></script> <!-- Google Maps API -->
 </head>
 <body>
+    <header>
+        <h1>BYUI Wayfinder</h1>
+    </header>
     
+    <div id="map"></div> <!-- This is where your map will be displayed -->
+    
+    <script src="script.js"></script> <!-- Linking your JS file -->
 </body>
 </html>
