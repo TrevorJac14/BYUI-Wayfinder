@@ -9,8 +9,7 @@ const customLocations = [
 document.getElementById("loadMapButton").addEventListener("click", function() {
   // Create the script element to load the Google Maps API dynamically
   var script = document.createElement("script");
-  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAxb-BbbqZrcztOtVAk1Mq0lvcsDVKDtNY&callback=initMap";
-  script.async = true;
+  script.async.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAxb-BbbqZrcztOtVAk1Mq0lvcsDVKDtNY&callback=initMap";
   document.body.appendChild(script);
 });
 

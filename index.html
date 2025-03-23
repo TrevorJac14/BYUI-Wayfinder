@@ -14,21 +14,22 @@
 
     <!-- Route selection container (dropdowns for start and destination) -->
     <div class="route-container">
-      <select id="startLocation" onchange="selectLocation()">
-        <option value="">Select Start Location</option>
-        <option value="0">The MC</option>
-        <option value="1">Library</option>
-        <option value="2">The STC</option>
-      </select>
+      <select id="startLocation">
+        <option value="">Select Destination</option>
+        <option value="The MC">The MC</option>
+        <option value="Library">Library</option>
+        <option value="The STC">The STC</option>
+      </select>      
+      
 
-      <select id="endLocation" onchange="selectLocation()">
+      <select id="endLocation">
         <option value="">Select Destination</option>
         <option value="0">The MC</option>
         <option value="1">Library</option>
         <option value="2">The STC</option>
       </select>
 
-      <button id="loadMapButton" onclick="loadMap()">Load Map</button>
+      <button id="loadMapButton">Load Map</button>
     </div>
   </div>
 
