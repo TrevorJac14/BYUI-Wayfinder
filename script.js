@@ -3,9 +3,9 @@ const directionsService = new google.maps.DirectionsService();
 const directionsRenderer = new google.maps.DirectionsRenderer();
 
 const customLocations = [
-  { name: "Student Center", lat: 40.769, lng: -73.983 },
-  { name: "Library", lat: 40.768, lng: -73.980 },
-  { name: "Science Building", lat: 40.770, lng: -73.985 }
+  { name: "The MC", lat: 43.82024764683613, lng: -111.77471459817133 },
+  { name: "Library", lat: 43.818, lng: -111.785 },
+  { name: "The STC", lat: 43.81461196463408, lng: -111.78429133339502 }
 ];
 
 // Load Google Maps API dynamically when the map is requested
