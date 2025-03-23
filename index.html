@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Campus Walking Routes</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Navigator</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Campus Walking Routes</h1>
+  <header>
+    <h1>Campus Navigator</h1>
+    <p>Find your way around campus quickly and easily!</p>
+  </header>
 
-  <div class="main-container">
-    <!-- Map container -->
-    <div id="map"></div>
+  <main>
+    <section id="map-section">
+      <div id="map"></div>
+    </section>
 
-    <!-- Route selection container (dropdowns for start and destination) -->
-    <div class="route-container">
-      <select id="startLocation">
-        <option value="">Select Destination</option>
-        <option value="The MC">The MC</option>
-        <option value="Library">Library</option>
-        <option value="The STC">The STC</option>
-      </select>      
+    <section id="controls">
+      <label for="start">Start Location:</label>
+      <input type="text" id="start" placeholder="Enter starting point" />
       
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" placeholder="Enter destination" />
+      
+      <button id="find-route">Find Route</button>
+    </section>
+  </main>
 
-      <select id="endLocation">
-        <option value="">Select Destination</option>
-        <option value="0">The MC</option>
-        <option value="1">Library</option>
-        <option value="2">The STC</option>
-      </select>
+  <footer>
+    <p>&copy; 2025 Campus Navigator</p>
+  </footer>
 
-      <button id="loadMapButton">Load Map</button>
-    </div>
-  </div>
-
+  <!-- Google Maps API Script -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
