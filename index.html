@@ -3,37 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Campus Navigator</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Campus Map Navigation</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Campus Navigator</h1>
-    <p>Find your way around campus quickly and easily!</p>
+    <h1>Campus Map Navigation</h1>
   </header>
 
-  <main>
-    <section id="map-section">
-      <div id="map">Map will display here</div>
-    </section>
+  <!-- Dropdown for selecting buildings -->
+  <label for="buildingSelect">Select a Building:</label>
+  <select id="buildingSelect">
+    <option value="43.8141,-111.7841">BYU-Idaho Center</option>
+    <option value="43.8137,-111.7838">Science and Technology Center</option>
+    <option value="43.8148,-111.7853">Taylor Building</option>
+    <option value="43.8153,-111.7825">Manwaring Center</option>
+  </select>
 
-    <section id="controls">
-      <label for="start">Start Location:</label>
-      <input type="text" id="start" placeholder="Enter starting point" />
-      
-      <label for="destination">Destination:</label>
-      <input type="text" id="destination" placeholder="Enter destination" />
-      
-      <button id="find-route">Find Route</button>
-    </section>
-  </main>
+  <!-- Button to load map -->
+  <button id="loadMapButton">Load Map</button>
 
-  <footer>
-    <p>&copy; 2025 Campus Navigator</p>
-  </footer>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxb-BbbqZrcztOtVAk1Mq0lvcsDVKDtNY&callback=initMap">
-</script>
+  <!-- Map Container -->
+  <div id="map" style="height: 500px; width: 100%; display: none;"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
+
+<!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxb-BbbqZrcztOtVAk1Mq0lvcsDVKDtNY&callback=initMap">-->

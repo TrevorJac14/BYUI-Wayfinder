@@ -1,29 +1,49 @@
-function initMap() {
-  // Set the initial location (you can adjust this to your campus coordinates)
-  const campusLocation = { lat: 43.8186, lng: -111.7836 }; // Example: BYU-Idaho coordinates
+let map;
+let marker;
 
-  // Initialize the map
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: campusLocation,
-    zoom: 16,
-  });
-
-  // Add a marker for the initial view
-  new google.maps.Marker({
-    position: campusLocation,
-    map: map,
-    title: "Welcome to Campus!",
-  });
-}
-
-document.getElementById('find-route').addEventListener('click', () => {
-  const start = document.getElementById('start').value;
-  const destination = document.getElementById('destination').value;
-
-  if (!start || !destination) {
-    alert('Please enter both a starting point and a destination.');
+// Function to load Google Maps API dynamically
+function loadGoogleMapsAPI() {
+  if (document.getElementById('googleMapsScript')) {
+    console.log("Google Maps API is already loaded.");
     return;
   }
 
-  alert(`Finding the best route from ${start} to ${destination}!`);
-});
+  const script = document.createElement('script');
+  script.id = 'googleMapsScript';
+  script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
+  script.async = true;
+  script.defer = true;
+  document.body.appendChild(script);
+}
+
+// Initialize the map
+function initMap() {
+  const centerLocation = { lat: 43.8141, lng: -111.7841 };
+
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: centerLocation,
+    zoom: 16,
+  });
+
+  marker = new google.maps.Marker({
+    position: centerLocation,
+    map: map,
+    title: "BYU-Idaho Center",
+  });
+
+  document.getElementById("map").style.display = "block"; // Show map
+}
+
+// Update marker based on dropdown selection
+function updateMarker() {
+  const select = document.getElementById('buildingSelect');
+  const [lat, lng] = select.value.split(',').map(Number);
+  const location = { lat, lng };
+
+  map.setCenter(location);
+  marker.setPosition(location);
+}
+
+// Event Listeners
+document.getElementById('loadMapButton').addEventListener('click', loadGoogleMapsAPI);
+document.getElementById('buildingSelect').addEventListener('change', updateMarker);

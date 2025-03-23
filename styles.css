@@ -1,86 +1,40 @@
-/* Reset styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
     font-family: Arial, sans-serif;
-  }
-  
-  /* Basic Layout */
-  body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+    margin: 20px;
     background-color: #f9f9f9;
   }
   
-  /* Header */
   header {
-    background-color: #007bff;
+    background-color: #00447c;
     color: white;
-    padding: 20px;
     text-align: center;
-  }
-  
-  /* Main Section */
-  main {
-    display: flex;
-    flex: 1;
-    gap: 20px;
     padding: 20px;
   }
   
-  /* Map Section */
-  #map-section {
-    flex: 3;
-    background-color: #ddd;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  h1 {
+    margin: 0;
   }
   
-  /* Controls Section */
-  #controls {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  input, button {
-    padding: 10px;
+  label, select, button {
+    margin: 10px 0;
     font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
   }
   
   button {
     background-color: #007bff;
     color: white;
     border: none;
+    padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
   }
   
   button:hover {
     background-color: #0056b3;
   }
   
-  /* Footer */
-  footer {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    padding: 10px;
-  }
   #map {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-  }
-  #map-section {
-    flex: 3;
-    height: 500px;
-    background-color: #ddd;
+    margin-top: 20px;
+    border: 2px solid #ccc;
   }
   
