@@ -56,7 +56,7 @@ function initMap() {
     calculateRoute(map);
   });
 
-  document.getElementById("destinationLocation").addEventListener("change", function() {
+  document.getElementById("endLocation").addEventListener("change", function() {
     calculateRoute(map);
   });
 }
@@ -64,7 +64,7 @@ function initMap() {
 // Function to calculate the route from start to destination
 function calculateRoute(map) {
   var startLocation = document.getElementById("startLocation").value;
-  var destinationLocation = document.getElementById("destinationLocation").value;
+  var destinationLocation = document.getElementById("endLocation").value;
 
   if (startLocation && destinationLocation) {
     // Find start and destination coordinates from custom locations
