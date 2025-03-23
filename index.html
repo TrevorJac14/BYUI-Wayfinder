@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BYUI Wayfinder</title>
-    <link rel="stylesheet" href="style.css"> <!-- Linking your CSS file -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" 
-            async defer></script> <!-- Google Maps API -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Navigator</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>BYUI Wayfinder</h1>
-    </header>
-    
-    <div id="map"></div> <!-- This is where your map will be displayed -->
-    
-    <script src="script.js"></script> <!-- Linking your JS file -->
+  <header>
+    <h1>Campus Navigator</h1>
+    <p>Find your way around campus quickly and easily!</p>
+  </header>
+
+  <main>
+    <section id="map-section">
+      <div id="map">Map will display here</div>
+    </section>
+
+    <section id="controls">
+      <label for="start">Start Location:</label>
+      <input type="text" id="start" placeholder="Enter starting point" />
+      
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" placeholder="Enter destination" />
+      
+      <button id="find-route">Find Route</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Campus Navigator</p>
+  </footer>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxb-BbbqZrcztOtVAk1Mq0lvcsDVKDtNY&callback=initMap">
+</script>
+  <script src="script.js"></script>
 </body>
 </html>

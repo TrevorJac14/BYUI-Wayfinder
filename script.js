@@ -1,18 +1,29 @@
-// Initialize and add the map
 function initMap() {
-    // The location of BYU-Idaho (adjust to your campus location)
-    const campus = { lat: 43.7100, lng: -116.9380 };
-    
-    // The map, centered at BYU-Idaho
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 16,
-        center: campus,
-    });
+  // Set the initial location (you can adjust this to your campus coordinates)
+  const campusLocation = { lat: 43.8186, lng: -111.7836 }; // Example: BYU-Idaho coordinates
 
-    // Adding a marker for BYU-Idaho (or you can add more markers for other buildings)
-    const marker = new google.maps.Marker({
-        position: campus,
-        map: map,
-        title: "BYU-Idaho",
-    });
+  // Initialize the map
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: campusLocation,
+    zoom: 16,
+  });
+
+  // Add a marker for the initial view
+  new google.maps.Marker({
+    position: campusLocation,
+    map: map,
+    title: "Welcome to Campus!",
+  });
 }
+
+document.getElementById('find-route').addEventListener('click', () => {
+  const start = document.getElementById('start').value;
+  const destination = document.getElementById('destination').value;
+
+  if (!start || !destination) {
+    alert('Please enter both a starting point and a destination.');
+    return;
+  }
+
+  alert(`Finding the best route from ${start} to ${destination}!`);
+});
