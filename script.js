@@ -1,49 +1,79 @@
 let map;
-let marker;
+const directionsService = new google.maps.DirectionsService();
+const directionsRenderer = new google.maps.DirectionsRenderer();
 
-// Function to load Google Maps API dynamically
-function loadGoogleMapsAPI() {
-  if (document.getElementById('googleMapsScript')) {
-    console.log("Google Maps API is already loaded.");
-    return;
-  }
+const customLocations = [
+  { name: "Student Center", lat: 40.769, lng: -73.983 },
+  { name: "Library", lat: 40.768, lng: -73.980 },
+  { name: "Science Building", lat: 40.770, lng: -73.985 }
+];
 
+// Load Google Maps API dynamically when the map is requested
+function loadMap() {
   const script = document.createElement('script');
-  script.id = 'googleMapsScript';
-  script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAxb-BbbqZrcztOtVAk1Mq0lvcsDVKDtNY&callback=initMap`;
   script.async = true;
-  script.defer = true;
   document.body.appendChild(script);
 }
 
-// Initialize the map
+// Initialize the map after API is loaded
 function initMap() {
-  const centerLocation = { lat: 43.8141, lng: -111.7841 };
+  // Make the map visible
+  document.getElementById('map').style.display = 'block';
 
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: centerLocation,
-    zoom: 16,
+  // Initialize the map
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: 40.769, lng: -73.983 },
+    zoom: 16
   });
 
-  marker = new google.maps.Marker({
-    position: centerLocation,
-    map: map,
-    title: "BYU-Idaho Center",
+  directionsRenderer.setMap(map);
+
+  // Add custom markers
+  customLocations.forEach(location => {
+    const marker = new google.maps.Marker({
+      position: { lat: location.lat, lng: location.lng },
+      map: map,
+      title: location.name
+    });
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: `<h3>${location.name}</h3>`
+    });
+
+    marker.addListener('click', function() {
+      infoWindow.open(map, marker);
+    });
   });
 
-  document.getElementById("map").style.display = "block"; // Show map
+  // Disable the "Load Map" button after the map is loaded
+  document.getElementById('loadMapButton').disabled = true;
 }
 
-// Update marker based on dropdown selection
-function updateMarker() {
-  const select = document.getElementById('buildingSelect');
-  const [lat, lng] = select.value.split(',').map(Number);
-  const location = { lat, lng };
-
-  map.setCenter(location);
-  marker.setPosition(location);
+// Handle the location selection from dropdown
+function selectLocation() {
+  const locationIndex = document.getElementById('locationSelector').value;
+  if (locationIndex !== "") {
+    const selectedLocation = customLocations[locationIndex];
+    map.panTo({ lat: selectedLocation.lat, lng: selectedLocation.lng });
+    map.setZoom(16);
+    calculateRoute(selectedLocation);
+  }
 }
 
-// Event Listeners
-document.getElementById('loadMapButton').addEventListener('click', loadGoogleMapsAPI);
-document.getElementById('buildingSelect').addEventListener('change', updateMarker);
+// Calculate the walking route from the default location to the selected location
+function calculateRoute(destination) {
+  const request = {
+    origin: { lat: 40.769, lng: -73.983 }, // Starting point (e.g., current location)
+    destination: { lat: destination.lat, lng: destination.lng },
+    travelMode: google.maps.TravelMode.WALKING
+  };
+
+  directionsService.route(request, function(result, status) {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsRenderer.setDirections(result);
+    } else {
+      alert("Directions request failed due to " + status);
+    }
+  });
+}

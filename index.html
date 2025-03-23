@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Campus Map Navigation</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Campus Walking Routes</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Campus Map Navigation</h1>
-  </header>
+  <h1>Campus Walking Routes</h1>
 
-  <!-- Dropdown for selecting buildings -->
-  <label for="buildingSelect">Select a Building:</label>
-  <select id="buildingSelect">
-    <option value="43.8141,-111.7841">BYU-Idaho Center</option>
-    <option value="43.8137,-111.7838">Science and Technology Center</option>
-    <option value="43.8148,-111.7853">Taylor Building</option>
-    <option value="43.8153,-111.7825">Manwaring Center</option>
-  </select>
+  <div class="main-container">
+    <!-- Map container -->
+    <div id="map"></div>
 
-  <!-- Button to load map -->
-  <button id="loadMapButton">Load Map</button>
+    <!-- Route selection container (dropdowns for start and destination) -->
+    <div class="route-container">
+      <select id="startLocation" onchange="selectLocation()">
+        <option value="">Select Start Location</option>
+        <option value="0">Student Center</option>
+        <option value="1">Library</option>
+        <option value="2">Science Building</option>
+      </select>
 
-  <!-- Map Container -->
-  <div id="map" style="height: 500px; width: 100%; display: none;"></div>
+      <select id="endLocation" onchange="selectLocation()">
+        <option value="">Select Destination</option>
+        <option value="0">Student Center</option>
+        <option value="1">Library</option>
+        <option value="2">Science Building</option>
+      </select>
+
+      <button id="loadMapButton" onclick="loadMap()">Load Map</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 
 <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxb-BbbqZrcztOtVAk1Mq0lvcsDVKDtNY&callback=initMap">-->
